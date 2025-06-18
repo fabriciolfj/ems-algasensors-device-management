@@ -2,7 +2,7 @@ spring:
   application:
     name: device-management
   datasource:
-    url: jdbc:h2:file:~/algasensors-device-management-db2;CASE_INSENSITIVE_IDENTIFIERS=TRUE;
+    url: jdbc:h2:mem:~/algasensors-device-management-db2;CASE_INSENSITIVE_IDENTIFIERS=TRUE;
     driver-class-name: org.h2.Driver
     username: sa
     password: 123
