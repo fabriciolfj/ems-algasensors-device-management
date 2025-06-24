@@ -15,6 +15,7 @@ public class RestClientFactory {
 
     private final RestClient.Builder builder;
 
+    //o create nao carrega os modules do jackson
     public RestClient temperatureMonitoringRestClient() {
         return builder.baseUrl("http://localhost:8082")
                 .requestFactory(generateClientHttpRequestFactory())
