@@ -20,7 +20,12 @@ public class RestClientFactory {
         return builder.baseUrl("http://localhost:8082")
                 .requestFactory(generateClientHttpRequestFactory())
                 .defaultStatusHandler(HttpStatusCode::isError, (request, response) -> {
-                    throw new SensorMonitoringClientBadGatewayException();
+                    var statusCode = response.getStatusCode();
+
+                    switch (statusCode.value()) {
+                        case 400 -> throw new SensorMonitoringClientBadGatewayException();
+                        default -> throw new SensorMonitoringClientBadGatewayException();
+                    }
                 })
                 .build();
     }
